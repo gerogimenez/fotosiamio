@@ -12,6 +12,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const API_KEY = process.env.GEMINI_API_KEY;
   if (!API_KEY) {
+    return res.status(500).json({ error: "API key not configured on server", env: process.env });
+  }
+  const API_KEY = process.env.GEMINI_API_KEY;
+  if (!API_KEY) {
     return res.status(500).json({ error: "API key not configured on server" });
   }
 
